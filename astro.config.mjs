@@ -4,7 +4,8 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-    site: "https://ahmedeltwab.dev",
+    site: "https://AhmedMTwab.github.io",
+    base: "/portfolio",
 
     trailingSlash: "always",
 
