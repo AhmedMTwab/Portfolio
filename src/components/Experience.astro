@@ -1,0 +1,59 @@
+---
+const calendarIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>`;
+const locationIcon = `<path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>`;
+
+const stack = ["ASP.NET Core", "EF Core", "SQL Server", "Clean Architecture", "CQRS", "MediatR", "JWT", "IIS"];
+
+const bullets = [
+    "<strong>Rebuilt a vendor-abandoned system from zero documentation</strong> — reverse-engineered 7 core business modules through stakeholder interviews and database analysis, with no source code and no handover from the original vendor",
+    "<strong>Migrated a corrupted legacy database with zero downtime</strong> — restructured the schema and moved data while sustaining live operations for 2,300+ employees, 700+ daily visitors, and 150+ tenant companies",
+    "<strong>Established a Clean Architecture foundation</strong> — centralized exception handling, CQRS with MediatR, and a layered structure that made the codebase navigable for new contributors from day one",
+    "<strong>Handled a live SQL Server Express → Enterprise upgrade</strong> on a production server — managed SQL Server Agent permissions, SSIS dependency issues, and post-upgrade verification under operational pressure",
+    "<strong>Deployed and maintained the full IIS setup</strong> — PFX certificate binding, HTTP→HTTPS redirect via URL Rewrite, app pool identity SQL permissions, 500.30 startup error debugging",
+    "<strong>Maintains a legacy inter-department mailing system</strong> alongside the VMS — reading undocumented code and extending it without breaking existing workflows",
+];
+
+const impact = [
+    "2,300+ employees served",
+    "700+ daily visitors managed",
+    "150+ tenant companies",
+    "7 modules rebuilt from zero",
+    "Zero downtime migration",
+];
+---
+
+<section id="experience" class="reveal">
+  <div class="section-header">
+    <span class="section-tag">experience</span>
+    <h2 class="section-title">Where I've worked</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-company">Egyptian Media Production City (EMPC)</div>
+      <div class="tl-role">.NET Backend Developer</div>
+      <div class="tl-meta">
+        <span>
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" set:html={calendarIcon}></svg>
+          Oct 2024 – present
+        </span>
+        <span>
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" set:html={locationIcon}></svg>
+          Cairo, Egypt
+        </span>
+      </div>
+      <div class="tl-stack">
+        {stack.map((s) => <span class="stack-tag">{s}</span>)}
+      </div>
+      <p class="tl-body">
+        Joined EMPC as the sole backend developer responsible for their Visitor Management System — a platform that had been abandoned by its original vendor. The codebase was gone. I started from a running production database and stakeholder conversations, and rebuilt 7 core modules while the system stayed live for <strong>2,300+ employees and 700+ daily visitors</strong>.
+      </p>
+      <ul class="tl-bullets">
+        {bullets.map((b) => <li set:html={b}></li>)}
+      </ul>
+      <div class="tl-impact">
+        {impact.map((p) => <span class="impact-pill">{p}</span>)}
+      </div>
+    </div>
+  </div>
+</section>

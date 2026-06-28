@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+
+const { data } = project;
+
+const badgeClassMap: Record<string, string> = {
+    "Featured": "featured",
+    "Live": "live",
+    "Company Project": "internal",
+    "Open Source": "oss",
+};
+---
+
+<div class={`proj${data.featured ? " featured" : ""}`}>
+    <div class="proj-top">
+        <div>
+            <div class="proj-name">{data.title}</div>
+            <div class="proj-subtitle">{data.subtitle}</div>
+        </div>
+        <div class="proj-badges">
+            {data.badges.map((b) => (
+                <span class={`badge ${badgeClassMap[b] ?? "internal"}`}>{b}</span>
+            ))}
+        </div>
+    </div>
+    <p class="proj-desc">{data.summary}</p>
+    {data.bullets.length > 0 && (
+        <ul class="proj-bullets">
+            {data.bullets.map((b) => (
+                <li><strong>{b.label}</strong> {b.text}</li>
+            ))}
+        </ul>
+    )}
+    {data.highlights.length > 0 && (
+        <div class="proj-highlights">
+            {data.highlights.map((h) => <span class="highlight">{h}</span>)}
+        </div>
+    )}
+    <div class="proj-stack">
+        {data.tech.map((t) => <span class="stack-tag">{t}</span>)}
+    </div>
+    {(data.github || data.demo) && (
+        <div class="proj-links">
+            {data.github && (
+                <a href={data.github} target="_blank" rel="noopener" class="proj-link">GitHub →</a>
+            )}
+            {data.demo && (
+                <a href={data.demo} target="_blank" rel="noopener" class="proj-link">Live API / Swagger →</a>
+            )}
+        </div>
+    )}
+</div>

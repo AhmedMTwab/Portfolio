@@ -1,0 +1,31 @@
+---
+const proficient = [
+    "C#", "ASP.NET Core", "Entity Framework Core", "SQL Server", "Clean Architecture",
+    "CQRS / MediatR", "JWT Auth", "ASP.NET Core Identity", "IIS", "REST APIs", "LINQ",
+    "Dependency Injection", "xUnit / Moq", "FluentValidation", "AutoMapper", "Serilog",
+    "Git", "Swagger / OpenAPI",
+];
+
+const familiar = [
+    "Docker", "CI/CD", "Azure", "ASP.NET Core MVC", "SignalR", "Hangfire", "CsvHelper", "EPPlus",
+];
+---
+
+<section id="skills" class="reveal">
+  <div class="section-header">
+    <span class="section-tag">skills</span>
+    <h2 class="section-title">What I work with</h2>
+  </div>
+  <div class="skills-block">
+    <div class="skills-label">Proficient</div>
+    <div class="chips">
+      {proficient.map((s) => <span class="chip">{s}</span>)}
+    </div>
+  </div>
+  <div class="skills-block">
+    <div class="skills-label">Familiar</div>
+    <div class="chips">
+      {familiar.map((s) => <span class="chip dim">{s}</span>)}
+    </div>
+  </div>
+</section>

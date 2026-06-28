@@ -1,0 +1,99 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+    return projects.map((project) => ({
+        params: { slug: project.id },
+        props: { project },
+    }));
+}
+
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`${project.data.title} — Ahmed Eltwab`}>
+  <div class="container">
+    <article class="proj-detail">
+      <a href="/#projects" class="back-link">← Back to projects</a>
+      <ProjectCard project={project} />
+      <div class="proj-body">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .back-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-block;
+    margin: 1.5rem 0 1rem;
+  }
+  .back-link:hover {
+    text-decoration: underline;
+  }
+  .proj-detail {
+    padding-top: 1rem;
+  }
+  .proj-body {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .proj-body :global(h1),
+  .proj-body :global(h2),
+  .proj-body :global(h3) {
+    color: var(--text);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .proj-body :global(h1) {
+    font-size: 26px;
+  }
+  .proj-body :global(h2) {
+    font-size: 20px;
+  }
+  .proj-body :global(p) {
+    margin-bottom: 1rem;
+  }
+  .proj-body :global(ul) {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  .proj-body :global(ul li) {
+    padding: 5px 0 5px 20px;
+    position: relative;
+  }
+  .proj-body :global(ul li::before) {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+    top: 8px;
+  }
+  .proj-body :global(strong) {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .proj-body :global(code) {
+    font-family: var(--mono);
+    background: var(--surface);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>

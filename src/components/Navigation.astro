@@ -1,0 +1,22 @@
+---
+const links = [
+    { href: "#about", label: "about" },
+    { href: "#skills", label: "skills" },
+    { href: "#projects", label: "projects" },
+    { href: "#experience", label: "experience" },
+    { href: "#blog", label: "blog" },
+    { href: "#contact", label: "contact" },
+];
+---
+
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav aria-label="Primary">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Ahmed Eltwab — home">ae<span>.</span></a>
+    <ul class="nav-links">
+      {links.map((l) => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</nav>

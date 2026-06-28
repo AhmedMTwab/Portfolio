@@ -1,0 +1,98 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const formatDate = (date: Date) =>
+    date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    });
+---
+
+<BaseLayout
+    title="Writing — Ahmed Eltwab"
+    description="Production lessons from .NET backend work — IIS deployments, SQL Server upgrades, EF Core performance, and clean architecture."
+>
+  <div class="container">
+    <main id="main">
+      <section class="archive">
+        <div class="section-header">
+          <span class="section-tag">archive</span>
+          <h2 class="section-title">All writing</h2>
+          <a href="/#blog" class="section-more">← Back to home</a>
+        </div>
+        <div class="blog-list">
+          {posts.map((post) => (
+            <a href={`/blog/${post.id}/`} class="blog-list-item">
+              <div class="blog-list-meta">
+                <span class="blog-list-cat">{post.data.tags[0] ?? "Writing"}</span>
+                <span class="blog-list-date">{formatDate(post.data.pubDate)}</span>
+              </div>
+              <div class="blog-list-title">{post.data.title}</div>
+              <div class="blog-list-desc">{post.data.description}</div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .archive {
+    padding: 90px 0 72px;
+  }
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .blog-list-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.75rem;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s;
+  }
+  .blog-list-item:hover {
+    border-color: var(--border-hover);
+  }
+  .blog-list-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .blog-list-cat {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .blog-list-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .blog-list-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+  .blog-list-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="404 — Page not found | Ahmed Eltwab"
+    description="The page you were looking for could not be found."
+    noindex={true}
+>
+  <main class="notfound-wrap">
+    <div class="notfound">
+      <div class="notfound-code">404</div>
+      <h1 class="notfound-title">Page not found</h1>
+      <p class="notfound-text">
+        The page you were looking for has moved, or never existed. From here you can:
+      </p>
+      <div class="notfound-links">
+        <a href="/" class="btn-primary">Back to homepage</a>
+        <a href="/#projects" class="btn-ghost">See projects</a>
+        <a href="/#blog" class="btn-ghost">Read the blog</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .notfound-wrap {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .notfound {
+    max-width: 560px;
+    text-align: center;
+  }
+  .notfound-code {
+    font-family: var(--mono);
+    font-size: 96px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-bottom: 1rem;
+  }
+  .notfound-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+  }
+  .notfound-text {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 1.75rem;
+  }
+  .notfound-links {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>

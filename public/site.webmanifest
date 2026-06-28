@@ -1,0 +1,22 @@
+{
+  "name": "Ahmed Eltwab — .NET Backend Developer",
+  "short_name": "AE",
+  "description": "Production-grade .NET backend engineering — ASP.NET Core, EF Core, SQL Server.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1117",
+  "theme_color": "#0D1117",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "32x32"
+    }
+  ]
+}

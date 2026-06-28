@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout
+    title="Projects — Ahmed Eltwab"
+    description="All projects I've built — production systems, APIs, and analytics tools."
+>
+  <div class="container">
+    <main id="main">
+      <section class="archive">
+        <div class="section-header">
+          <span class="section-tag">archive</span>
+          <h2 class="section-title">All projects</h2>
+          <a href="/#projects" class="archive-back">← Back to home</a>
+        </div>
+        <div class="projects-list">
+          {projects.map((project) => <ProjectCard project={project} />)}
+        </div>
+      </section>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .archive {
+    padding: 90px 0 72px;
+  }
+  .archive-back {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .archive-back:hover {
+    text-decoration: underline;
+  }
+</style>
