@@ -8,13 +8,13 @@
   "theme_color": "#0D1117",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/Portfolio/favicon.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any"
     },
     {
-      "src": "/favicon.ico",
+      "src": "/Portfolio/favicon.ico",
       "type": "image/x-icon",
       "sizes": "32x32"
     }
