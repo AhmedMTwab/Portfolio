@@ -18,7 +18,7 @@ const projects = (await getCollection("projects")).sort(
         <div class="section-header">
           <span class="section-tag">archive</span>
           <h2 class="section-title">All projects</h2>
-          <a href="/#projects" class="archive-back">← Back to home</a>
+          <a href={`${import.meta.env.BASE_URL}#projects`} class="archive-back">← Back to home</a>
         </div>
         <div class="projects-list">
           {projects.map((project) => <ProjectCard project={project} />)}

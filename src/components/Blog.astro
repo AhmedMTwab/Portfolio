@@ -13,6 +13,8 @@ const formatDate = (date: Date) =>
         month: "short",
         day: "numeric",
     });
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="blog" class="reveal">
@@ -22,12 +24,12 @@ const formatDate = (date: Date) =>
   </div>
   <div class="blog-grid">
     {publishedPosts.map((post) => (
-      <a href={`/blog/${post.id}/`} class="blog-card">
+      <a href={`${base}blog/${post.id}/`} class="blog-card">
         <div class="blog-cat">{post.data.tags[0] ?? "Writing"}</div>
         <div class="blog-title">{post.data.title}</div>
         <div class="blog-date">{formatDate(post.data.pubDate)}</div>
       </a>
     ))}
   </div>
-  <div class="blog-more"><a href="/blog/">See all posts →</a></div>
+  <div class="blog-more"><a href={`${base}blog/`}>See all posts →</a></div>
 </section>

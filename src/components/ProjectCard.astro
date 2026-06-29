@@ -15,12 +15,16 @@ const badgeClassMap: Record<string, string> = {
     "Company Project": "internal",
     "Open Source": "oss",
 };
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class={`proj${data.featured ? " featured" : ""}`}>
     <div class="proj-top">
         <div>
-            <div class="proj-name">{data.title}</div>
+            <a href={`${base}projects/${project.id}/`} class="proj-name-link">
+                <div class="proj-name">{data.title}</div>
+            </a>
             <div class="proj-subtitle">{data.subtitle}</div>
         </div>
         <div class="proj-badges">
